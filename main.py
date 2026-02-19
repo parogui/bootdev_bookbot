@@ -1,16 +1,12 @@
-FRANKENSTEIN_BOOK="books/frankenstein.txt"
-
-def get_book_text(book):
-    with open(book) as f:
-        book_content = f.read()
-        return(book_content)
-
-def counting_words():
-    text=get_book_text(FRANKENSTEIN_BOOK).split(None,-1)
-    words_count=len(text)
-    print(f'Found {words_count} total words')
+from stats import counting_words,counting_characters,sorting_characters,check_arguments
+import sys
 
 def main():
-    counting_words()
-
+    check_arguments(sys.argv)
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book at {sys.argv[1]}...")
+    counting_words(sys.argv[1])
+    #counting_characters(FRANKENSTEIN_BOOK)
+    sorting_characters(sys.argv[1])
+    print("============= END ===============")
 main()
